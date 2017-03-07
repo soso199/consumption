@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">consumption</string>
+    <string name="fuel_quantity">მიუთითეთ საწვავის რაოდენობა</string>
+    <string name="distance">მიუთითეთ  გავლილი მანძილი</string>
+    <string name="calculate">დათვლა</string>
+    <string name="back">დაბრუნება</string>
+    <string name="rezult_text">თქვენი ავტომობილის წვა \n (100)-ზე</string>
+    <string name="language">ქართული</string>
+    <string name="alert_title">შეგვაფასეთ</string>
+    <string name="alert_text">" იმისათვის რომ გავაუმჯობესოთ ხარისხი,გთხოვთ შეგვაფასოთ"</string>
+    <string name="eccept">თანხმობა</string>
+    <string name="later">მოგვიანებით</string>
+    <string name="alert_empty_title">შეცდომა</string>
+    <string name="alert_empty_text">"გთხოვთ შეავსოთ ყველა "</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">consumption</string>
+    <string name="fuel_quantity">INDICATE QUANTITY OF FUEL</string>
+    <string name="distance">INDICATE  PASSED DISTANCE</string>
+    <string name="calculate">CALCULATE</string>
+    <string name="back">RETURN</string>
+    <string name="rezult_text">Car Fuel Consumption (100Km)</string>
+    <string name="language">English</string>
+    <string name="alert_title">Rate Us</string>
+    <string name="alert_text">Leave Comment, To Improve Quality</string>
+    <string name="eccept">Accept</string>
+    <string name="later">Later</string>
+    <string name="alert_empty_title">Error</string>
+    <string name="alert_empty_text">Please Fill In All Fields</string>
+</resources>

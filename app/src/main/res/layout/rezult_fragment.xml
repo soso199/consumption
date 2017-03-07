@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@android:style/Theme.NoTitleBar"
+
+    tools:context="ge.idevelopers.consumption.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:id="@+id/main_layout"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.35"
+
+            android:id="@+id/fuel_image"
+
+            >
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:id="@+id/line_1"
+
+            >
+            <View
+                android:layout_width="fill_parent"
+                android:visibility="invisible"
+                android:layout_height="2dip"
+                android:background="#c4cac4" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:id="@+id/fuel"
+            android:gravity="bottom"
+
+            >
+            <TextView
+                android:maxLines="4"
+                android:lines="2"
+                android:layout_width="@dimen/rezult_text_width"
+                android:layout_height="@dimen/rezult_text_height"
+                android:textColor="#B18DFF"
+                android:gravity="center"
+                android:text="@string/rezult_text"
+                android:background="@drawable/round_3"
+                android:layout_gravity="bottom"
+                android:id="@+id/rezult_text"
+
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                />
+
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:id="@+id/line_2"
+
+            >
+            <View
+                android:layout_width="fill_parent"
+                android:visibility="invisible"
+                android:layout_height="2dip"
+                android:background="#c4cac4" />
+
+        </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:id="@+id/fuel2"
+
+            >
+
+            <TextView
+                android:layout_width="@dimen/rezult_width"
+                android:layout_height="@dimen/rezult_height"
+                android:gravity="center"
+                android:textColor="#000"
+                android:text=""
+                android:id="@+id/rezult"
+                android:background="@drawable/round_2"
+                android:textAlignment="center"
+
+
+                android:layout_gravity="bottom"
+
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                />
+
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:id="@+id/line_3"
+            >
+            <View
+                android:layout_width="fill_parent"
+                android:visibility="invisible"
+                android:layout_height="2dip"
+                android:background="#c4cac4"
+
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+
+            >
+
+
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:paddingBottom="20dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="bottom"
+                android:weightSum="1"
+
+                >
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

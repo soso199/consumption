@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">consumption</string>
+    <string name="fuel_quantity">УКАЖИТЕ ОБЬЕМ ТОПЛИВА</string>
+    <string name="distance">УКАЖИТЕ ПРОЙДЕННОЕ РОССТОЯНИЕ</string>
+    <string name="calculate">РАСЧИТАТЬ</string>
+    <string name="back">НАЗАД</string>
+    <string name="rezult_text">Ваша Машина Расходует  Топлива На (100Км)</string>
+    <string name="language">РУССКИЙ</string>
+    <string name="alert_title">Оцените Нас</string>
+    <string name="later">Позже</string>
+    <string name="eccept">Согласен</string>
+    <string name="alert_text">Чтобы Улучшить Качество, Пожалуйста Оцените Нас</string>
+    <string name="alert_empty_title">Ошибка</string>
+    <string name="alert_empty_text">Пожалуйста, Заполните Все Поля</string>
+</resources>
