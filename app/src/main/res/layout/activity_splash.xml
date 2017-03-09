@@ -7,7 +7,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:theme="@android:style/Theme.NoTitleBar"
 tools:context="ge.idevelopers.consumption.SplashActivity"
-android:background="#202423"
+android:background="#172027"
     >
 
 <ImageView

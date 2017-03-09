@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,7 +21,7 @@
        <RelativeLayout
            android:layout_width="match_parent"
            android:layout_height="0dp"
-           android:layout_weight="1.1"
+           android:layout_weight="0.8"
            android:background="@drawable/fuel"
            android:id="@+id/fuel_image"
 
@@ -48,7 +49,7 @@
        <RelativeLayout
            android:layout_width="match_parent"
            android:layout_height="0dp"
-           android:layout_weight="0.4"
+           android:layout_weight="0.3"
            android:id="@+id/fuel"
 
            >
@@ -68,25 +69,20 @@
 
            <TextView
                android:text="@string/fuel_quantity"
-               android:textSize="18sp"
+               android:textSize="@dimen/font_size"
                android:textColor="#DADB71"
                android:paddingLeft="10dp"
                android:layout_width="0dp"
                android:layout_height="wrap_content"
                android:layout_gravity="center"
                android:gravity="center"
-               android:layout_weight="0.4"
+               android:layout_weight="0.35"
                android:id="@+id/fuel_text" />
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_weight="0.1"
 
-               />
 
            <EditText
                android:layout_width="0dp"
-               android:layout_height="wrap_content"
+               android:layout_height="@dimen/input_height"
                android:layout_gravity="center"
                android:textColor="#4C4C4C"
                android:textSize="18sp"
@@ -99,6 +95,10 @@
 
 
                />
+           <TextView
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="0.15"/>
 
 
        </LinearLayout>
@@ -128,7 +128,7 @@
        <RelativeLayout
            android:layout_width="match_parent"
            android:layout_height="0dp"
-           android:layout_weight="0.4"
+           android:layout_weight="0.3"
            android:id="@+id/fuel2"
 
            >
@@ -147,7 +147,7 @@
 
                <TextView
                    android:text="@string/distance"
-                   android:textSize="18sp"
+                   android:textSize="@dimen/font_size"
                    android:paddingLeft="10dp"
                    android:textColor="#DADB71"
                    android:layout_width="0dp"
@@ -156,19 +156,15 @@
                    android:layout_alignParentLeft="true"
                    android:layout_alignParentStart="true"
                    android:textAlignment="center"
-                   android:layout_weight="0.4"
+                   android:layout_weight="0.35"
                    android:id="@+id/fuel_text2" />
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_weight="0.1"/>
+
 
                <EditText
                    android:layout_width="0dp"
-                   android:layout_height="wrap_content"
+                   android:layout_height="@dimen/input_height"
                    android:layout_gravity="center"
                    android:textColor="#4C4C4C"
-
                    android:background="@drawable/round"
                    android:textSize="18sp"
                    android:inputType="numberDecimal"
@@ -179,6 +175,10 @@
 
 
                    />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="0.15"/>
 
 
            </LinearLayout>
@@ -205,7 +205,7 @@
        <RelativeLayout
            android:layout_width="match_parent"
            android:layout_height="0dp"
-           android:layout_weight="0.9"
+           android:layout_weight="0.6"
 
            >
 
@@ -216,7 +216,8 @@
                android:background="@drawable/button"
                android:gravity="center"
 
-               android:textSize="16sp"
+
+               android:textSize="@dimen/font_size"
                android:id="@+id/calculate"
                android:text="@string/calculate"
                android:textColor="#B18DFF"
@@ -231,8 +232,7 @@
        <RelativeLayout
            android:layout_width="match_parent"
            android:layout_height="0dp"
-           android:layout_weight="0.4"
-           android:paddingBottom="20dp"
+           android:layout_weight="0.2"
            >
 
     <LinearLayout
@@ -248,7 +248,9 @@
         <Button
             android:layout_width="40dp"
 
+            android:textSize="@dimen/font_size"
             android:layout_height="35dp"
+            android:layout_gravity="bottom"
             android:layout_weight="0.2"
             android:textColor="#fff"
             android:text="@string/language"
@@ -260,9 +262,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_weight="0.6"/>
         <TextView
             android:visibility="invisible"
+            android:layout_gravity="bottom"
             android:onClick="playStore"
             android:layout_width="50dp"
             android:layout_height="29dp"
@@ -274,6 +278,28 @@
         </LinearLayout>
 
 </RelativeLayout>
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="0.3"
+           android:id="@+id/banner"
+
+           >
+
+           <com.google.android.gms.ads.AdView
+               android:id="@+id/adView"
+               android:windowSoftInputMode="adjustNothing"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_alignParentBottom="true"
+               ads:adSize="BANNER"
+               ads:adUnitId="@string/banner_ad_unit_id">
+           </com.google.android.gms.ads.AdView>
+
+
+       </RelativeLayout>
+
 
    </LinearLayout>
     <FrameLayout

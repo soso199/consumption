@@ -12,5 +12,6 @@
     <string name="later">მოგვიანებით</string>
     <string name="alert_empty_title">შეცდომა</string>
     <string name="alert_empty_text">გთხოვთ შეავსოთ ყველა</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
 </resources>

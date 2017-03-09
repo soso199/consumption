@@ -10,19 +10,28 @@ import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.KeyListener;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.Locale;
 
@@ -59,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
     private Locale loc;
     private boolean is_first=false;
     private boolean rate_first=false;
+    private InputMethodManager imm;
+    private KeyListener originalKeyListener;
+    InterstitialAd mInterstitialAd;
+    boolean showAd=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         c = prefs.getInt("numRun",0);
+        if(c%2==0)
+            showAd=true;
         c++;
         prefs.edit().putInt("numRun",c).commit();
 
@@ -78,9 +93,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
+        final AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+            }
+        });
+
+
+        requestNewInterstitial();
 
 
 
+        imm  = (InputMethodManager) getSystemService(getBaseContext().INPUT_METHOD_SERVICE);
         typeface=Typeface.createFromAsset(getAssets(), "fonts/gugeshashvili_5_mthavruli.ttf");
         fuel_text = (TextView) findViewById(R.id.fuel_text);
         distance=(TextView) findViewById(R.id.fuel_text2);
@@ -109,6 +144,17 @@ public class MainActivity extends AppCompatActivity {
         edit2=(EditText)findViewById(R.id.fuel_enter_text2);
 
 
+        edit2.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                return false;
+            }
+        });
+
+
+
         // *********fonts********
         distance.setTypeface(typeface);
         fuel_text.setTypeface(typeface);
@@ -129,14 +175,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
         //////  ********calculate********   \\\\\\\\
 
         calc.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
 
-                if(edit1.getText().toString().isEmpty() || edit2.getText().toString().isEmpty())
+
+
+
+                    if(edit1.getText().toString().isEmpty() || edit2.getText().toString().isEmpty())
                 {
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
                     builder1.setTitle(R.string.alert_empty_title);
@@ -174,14 +222,19 @@ public class MainActivity extends AppCompatActivity {
         main.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
-                InputMethodManager imm = (InputMethodManager) getSystemService(MainActivity.this.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 return false;
             }
         });
 
 
+    }
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
     }
 
 
@@ -199,11 +252,29 @@ public class MainActivity extends AppCompatActivity {
             showFragment(v);
 
         }
-        else
-            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+       else {
+
+            edit1.requestFocus();
+
+//            mEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//                @Override
+//                public void onFocusChange(View v, boolean hasFocus) {
+//                    if (hasFocus) {
+//                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//                        imm.showSoftInput(mEditText, InputMethodManager.SHOW_IMPLICIT);
+//                    }
+//                }
+//            });
+
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,InputMethodManager.HIDE_IMPLICIT_ONLY);
+            //imm.showSoftInputFromInputMethod(edit1.getWindowToken(),InputMethodManager.SHOW_FORCED);
+
+        }
+
 
 
     }
+
 
     public void setLocal(String language) {
         loc=new Locale(language);
@@ -281,8 +352,13 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-
+            if(showAd) {
+                if (mInterstitialAd.isLoaded())
+                    mInterstitialAd.show();
+                    showAd=false;
+            }
             onBackPressed();
+
 
         }
 
